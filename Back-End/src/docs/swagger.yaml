@@ -1,0 +1,541 @@
+openapi: 3.0.0
+info:
+  title: SweetMedical API
+  version: 1.0.0
+  description: |
+    ## Sistema de gestión integral de turnos médicos
+    Esta API proporciona la infraestructura necesaria para gestionar el ciclo de vida de turnos, 
+    disponibilidad de profesional y la administración de todos los servicios de salud de SweetMedical.
+
+    ### Funcionalidades Principales
+    * **Gestión de Turnos:** Reserva, reprogramación y cancelación con validaciones lógicas.
+    * **Disponibilidad Médica:** Control de la agenda de un medico.
+    * **Filtros:** Búsqueda avanzada con filtros por sede, practica y profesional.
+    * **Cálculo de Cobertura:** Cálculo automático de costos según Obra Social y Plan del paciente.
+    
+    **Arquitectura:** Diseño basado en capas siguiendo convenciones **REST**. 
+
+    **Formato de Datos:** JSON (UTF-8).
+    
+servers:
+  - url: http://localhost:3000
+    description: Servidor de desarrollo local
+
+tags:
+  - name: Health
+    description: Verificación de estado del sistema
+  - name: Turnos
+    description: Gestion de turnos 
+  - name: Medicos
+    description: Gestión de disponibilidad y servicios profesionales
+  - name: Practicas
+    description:  Gestión de practicas y coberturas
+  - name: Especialidades
+    description: Gestión de especialidades
+  - name: Sedes 
+    description: Manejo de sedes 
+  - name: Pacientes 
+    description: Gestion de pacientes
+  - name: Obras sociales 
+    description: Gestion de obras sociales y planes
+  - name: Notificaciones
+    description: Gestion de notificaciones
+  - name: Usuarios
+    description: Registrar y logear en el sistema
+paths:
+
+  /healthcheck:
+    get:
+      tags: [Health]
+      summary: Verifica el estado del sistema
+      responses:
+        '200':
+          description: El sistema está operativo
+          content:
+            application/json:
+              example:
+                status: "El servidor está funcionando correctamente"
+
+
+  /turnos:
+    get: 
+      tags: [Turnos]
+      summary: Listar Todos Los turnos 
+      responses:
+        '200':
+          description: access success
+          content:
+            application/json:
+              schema:
+                type: array 
+                items: 
+                  $ref: '#/components/schemas/TurnoResponse'
+
+    post:
+      tags: [Turnos] 
+      summary: Crear un nuevo turno (Reserva)   
+      requestBody: 
+        description: Datos necesarios para la reserva del turno 
+        required: true 
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Turno'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema: 
+                $ref: '#/components/schemas/TurnoResponse'
+        '400': 
+          description: Datos inválidos o faltantes
+        '409':
+          description: El médico no está disponible en la fecha y hora seleccionada
+        '422':
+          description: Hubo un error al crear o modificar el turno
+  
+  /turnos/{id}:
+    get: 
+      tags: [Turnos]
+      summary: Encuentra un turno especifico 
+    put: 
+      tags: [Turnos]
+      summary: Actualizar turno del lado del medico 
+
+    patch:
+      tags: [Turnos]
+      summary: Confirmar un turno del lado del paciente 
+    
+    delete: 
+      tags: [Turnos]
+      summary: Borrar un turno del lado del paciente
+
+  /turnos/pacientes:
+    get:
+      tags: [Turnos]
+      summary: Buscar turnos posibles para un paciente
+    
+  /turnos/pacientes/{:id}:
+    get:
+      tags: [Turnos]
+      summary: Buscar turnos por pacienteId
+      
+  /turnos/medicos/{:id}:
+    get:
+      tags: [Turnos]
+      summary: Buscar turnos por medicoId
+  
+
+
+  /pacientes:
+    get:
+      tags: [Pacientes]
+      summary: Retorna todos los pacientes
+      responses:
+        '200': 
+          description: access success
+          content:
+            application/json:
+              schema:
+                type: array 
+                items:
+                  $ref: '#/components/schemas/PacienteResponse'
+    post: 
+      tags: [Pacientes] 
+      sumary: Crea un nuevo Paciente
+      requestBody: 
+        description: Datos necesarios para la reserva del turno 
+        required: true 
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Paciente'
+      responses: 
+        '201':
+          content:
+            application/json:
+              schema: 
+                $ref: '#/components/schemas/PacienteResponse'
+
+  /paciente/{id}:
+    get: 
+      tags: [Pacientes] 
+      sumary: Encontrar Paciente Por Id 
+
+
+
+  /especialidades:
+    get:
+      tags: [Especialidades]
+      summary: Retorna todas las especialidades
+    post: 
+      tags: [Especialidades]
+      sumary: Crea una nueva especialidad
+ 
+  /especialidades/{id}: 
+    get:
+      tags: [Especialidades]
+      sumary: Retorna una especialidad   
+    delete: 
+      tags: [Especialidades]
+      sumary: Borra una especiliadad
+
+
+  /practicas: 
+    get: 
+      tags: [Practicas]
+      sumary: Retorna todas las practicas del sistema
+    post: 
+      tags: [Practicas]
+      sumary: Crea una nueva practica 
+
+  /practicas/{id}:
+    get: 
+      tags: [Practicas] 
+      sumary: Retorna una practica 
+    delete: 
+        tags: [Practicas]
+        sumary: Borra un practica
+
+  /practicas/:id/coberturas:
+    post: 
+      tags: [Practicas]
+      summary: Crear una cobertura para una practica
+
+
+  /medicos:
+    get: 
+      tags: [Medicos]
+      summary: Retorna todos los medicos
+    post: 
+      tags: [Medicos]
+      summary: Crea un nuevo medico 
+
+  /medico/{id}:
+    get:
+      tags: [Medicos]
+      summary: Retorna un medico 
+
+  /medico/{id}/disponibilidades:
+    get: 
+      tags: [Medicos]
+      summary: Retorna todas las disponibilidades del medico 
+    post: 
+      tags: [Medicos]
+      summary: Crea una nueva disponibilidad 
+
+  /medico/{id}/disponibilidad/{disponibilidadID}:
+    delete: 
+      tags: [Medicos] 
+      summary: Borra una disponibilidad de un medico 
+
+  /medico/{id}/practicas:
+    get: 
+      tags: [Medicos] 
+      summary: Retorna todas las practicas de un medico
+
+  /medicos/{id}/practicas/{practicaId}:
+    post:
+      tags: [Medicos]
+      summary: Agregar práctica a un médico
+    delete:
+      tags: [Medicos]
+      summary: Remover práctica de un médico
+
+  /medicos/practicas/:practicaId:
+    get:
+      tags: [Medicos]
+      summary: Obtener medicos por practicaId 
+
+  /medicos/:id/especialidades:
+    get:
+      tags: [Medicos]
+      summary: Obtener especialidades de un medico 
+
+
+  /sedes: 
+    get:
+      tags: [Sedes]
+    sumary: Obtener Sedes 
+    post: 
+      tags: [Sedes]
+    sumary: Agregar Sede 
+  
+  /sedes/{id}:
+    get: 
+      tags: [Sedes]
+    summary: Obtener Sede por Id
+    delete:
+      tags: [Sedes]
+    sumary: Borrar Sede (Borrado Fisico)
+
+  
+  /obrasSociales:
+    get:
+      tags: [Obras sociales]
+      summary: Listar todas las obras sociales
+    post:
+      tags: [Obras sociales]
+      summary: Crear una nueva obra social
+
+  /obrasSociales/{id}:
+    get:
+      tags: [Obras sociales]
+      summary: Obtener obra social por ID
+
+  /obrasSociales/{id}/planes/{planId}:
+    post:
+      tags: [Obras sociales]
+      summary: Agregar plan a una obraSocial
+    delete: 
+      tags: [Obras sociales]  
+      summary: remover un plan de una ObraSocial 
+
+  /planes:
+    get:
+      tags: [Obras sociales]
+      summary: Obtener todos los planes
+    post:
+      tags: [Obras sociales]
+      summary: crear un nuevo plan
+
+  /planes/{id}/coberturas/{coberturaId}:
+    post:
+      tags: [Obras sociales]
+      summary: Agregar cobertura a un plan
+    delete:
+      tags: [Obras sociales]
+      summary: Remover cobertura de un plan
+
+
+  /notificaciones/usuarioId:
+    get:
+      tags: [Notificaciones]
+      summary: Obtener todas las notificaciones de un usuario
+    post:
+      tags: [Notificaciones]
+      summary: Crear una notificacion a un usuario
+    
+  /notificaciones/:notificacionId/leida:
+    patch: 
+      tags: [Notificaciones]
+      summary: Marcar una notificacion como leida
+
+  /register:
+    post: 
+      tags: [Usuarios]
+      summary: Crear un nuevo usuario
+    
+  /login:
+    post: 
+      tags: [Usuarios]
+      summary: legear en el sistema 
+components:
+  schemas:
+    Turno: 
+      type: Object
+      required: 
+      - id  
+      - medicoId
+      - fechaHora
+      - sedeId 
+      - practicaId
+      - nombrePractica
+      - duracionEnMins
+      - estado
+      - historialEstados
+      properties:
+        medicoId:
+          type: String
+        pacienteId:
+          type: String
+        fechaHora:
+          type: String
+          format: date-time
+        sedeId:
+          type: String
+        practicaId:
+          type: String
+        nombrePractica:
+          type: String
+        duracionEnMins:
+          type: Number
+        estado:
+          type: String
+    TurnoResponse:
+      type: Object
+      properties:
+        turnoId:
+          type: String 
+        pacienteId:
+          type: String
+        medicoId:
+          type: String
+        sedeId:
+          type: String
+        fechaHora:
+          type: String
+          format: date-time
+        nombrePractica:
+          type: String
+        duracionEnMins:
+          type: Number
+        estado:
+          type: String
+        historialEstados:
+          type: array
+          items:
+            type: Object
+            properties:
+              fechaHoraIngreso:
+                type: String
+                format: date-time
+              estado:
+                type: String
+              motivo:
+                type: String
+        costo:
+          type: Number
+    Medico:
+      type: Object
+      required: 
+        - usuarioId
+        - nombre
+        - matricula
+      properties:
+        usuarioId:
+          type: String
+        nombre:
+          type: String
+        matricula:
+          type: String 
+        sedes:
+          type: array
+          items:
+            type: Object
+            required: 
+              - sedeId
+              - nombreSede
+            properties:            
+              sedeId:
+                type: String
+              nombreSede: 
+                type: String
+        practicas:
+          type: array
+          items: 
+            type: Object
+            required: 
+              - practicaId
+              - nombrePractica
+            properties:
+              practicaId: 
+                type: String
+              nombrePractica:
+                type: String 
+        disponibilidades:
+          type: array 
+          items: 
+            type: Object
+            required: 
+              - diaSemana
+              - horaDesde
+              - horaHasta 
+            properties: 
+              diaSemana: 
+                type: String
+              horaDesde: 
+                type: String 
+              horaHasta: 
+                type: String  
+    Especialidad:
+      type: Object
+      required:
+        - nombre
+        - description
+      properties:
+        nombre:
+          type: String
+        description: 
+          type: String 
+    Practica:
+      type: Object
+      required:
+        - nombre
+        - duracionEnMins
+        - especialidadId
+        - nombreEspecialidad
+        - costo
+      properties:
+        nombre: 
+          type: String
+        duracionTurnoEnMins:
+          type: String
+        especialidadId:
+          type: String 
+        nombreEspecialidad:
+          type: String 
+        costo:
+          type: Number       
+    Sede:
+      type: Object
+      required:
+        - nombre 
+        - direccion 
+      properties:  
+        nombre: 
+          type: String
+        direccion:
+          type: String 
+    Usuario: 
+      type: Object
+      required: 
+        - nombre
+        - password
+      properties:
+        nombre:
+          type: String 
+        password:
+          type: String 
+    Paciente: 
+      type: Object
+      required:
+        - usuarioId
+        - dni
+        - nombre 
+        - obraSocialId
+        -  planId
+      properties: 
+        usuarioId:
+          type: String 
+        dni:
+          type: String 
+        nombre:
+          type: String 
+        obraSocialId: 
+          type: String 
+        planId:
+          type: String 
+    PacienteResponse: 
+      type: Object
+      properties:
+        id: 
+          type: String
+        dni: 
+          type: String
+        nombre:
+          type: String 
+        obraSocialId: 
+          type: String 
+        planId:
+          type: String 
+    Notificaciones: 
+      type: Object 
+      properties: 
+        usuarioId: 
+          type: String 
+        mensaje: 
+          type: String
+        leida: 
+          type: Bool 
+        fecha: date-time
