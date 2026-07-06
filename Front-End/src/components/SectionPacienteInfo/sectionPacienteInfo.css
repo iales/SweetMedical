@@ -1,0 +1,68 @@
+
+.mainsection-cards-wrapper {
+  display: flex !;
+  flex-direction: column;
+  gap: 24px;          
+  overflow-y: auto;   
+  flex-grow: 1;
+  padding-right: 10px; 
+  margin-left: 50px;
+}
+
+
+.grid-datos-personales {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 24px;
+  width: 100%;
+  margin-left: 30px;
+}
+
+
+.dato-bloque {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.dato-etiqueta {
+  font-size: 0.8rem;
+  color: #777777;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+
+.dato-valor {
+  font-size: 1.05rem;
+  color: #222222;
+  font-weight: 500;
+  word-break: break-word; 
+}
+
+
+@media (max-width: 960px) {
+  
+  .mainsection-cards-wrapper {
+    overflow-y: visible; 
+    padding-right: 0;
+    gap: 16px;
+  }
+
+ 
+  .grid-datos-personales {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+ 
+  .MuiPaper-root {
+    max-width: 100% !important; 
+  }
+
+ 
+  .dato-valor {
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,25 @@
+.footer-main {
+    display: flex;
+  background-color: var(--color-acento); 
+  color: #ffffff;
+  padding: 40px 20px 20px 20px;
+  width: 100%;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.footer-bottom {
+  flex-basis: 100%; 
+  text-align: center; 
+  margin-top: 20px;   
+}
+
+.footer-link {
+  color: var(--color-principal);  
+  text-decoration: none;       
+}
+
+.footer-link:hover {
+  color: var(--color-principal);  
+  text-decoration: underline;   
+}

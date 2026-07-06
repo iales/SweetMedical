@@ -1,0 +1,41 @@
+.header {
+  padding: 0rem;
+  margin-bottom:0.5rem;
+  background-color: var(--color-primario);
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 5px solid var(--color-acento);
+  max-width: 100%;
+}
+
+.nav-botones{
+  display:flex;
+  gap:1rem;
+  margin-right: 0.3rem;
+}
+
+
+.logoSweetLanding{
+  height:5rem;
+  width: auto;
+  display: block;
+}
+
+.logoSweetLanding img {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .nav-botones {
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+
+  .logoSweet img {
+    height: 3rem; 
+  }
+
+}

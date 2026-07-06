@@ -1,0 +1,27 @@
+.tarjeta-estado {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.texto-estado-confirmado {
+  font-size: 12px;
+  font-weight: bold;
+  color: #2e7d32;
+  text-transform: uppercase;
+}
+
+.texto-estado-cancelado {
+  font-size: 12px;
+  font-weight: bold;
+  color: #b71c1c;
+  text-transform: uppercase;
+}
+
+.texto-estado-esperando-confirmacion {
+  font-size: 12px;
+  font-weight: bold;
+  color: #0d47a1;
+  text-transform: uppercase;
+}

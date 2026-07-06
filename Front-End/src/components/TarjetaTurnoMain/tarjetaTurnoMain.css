@@ -1,0 +1,205 @@
+.tarjeta-contenedor {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 20px;
+  font-family: sans-serif; 
+  box-sizing: border-box;
+}
+
+.tarjeta-cuerpo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+
+
+.tarjeta-logo-box {
+  width: 75px;
+  height: 75px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0; 
+}
+
+.tarjeta-logo-img {
+  width: 100%;       
+  height: 100%;      
+  object-fit: contain;
+}
+
+
+.tarjeta-info-box {
+  flex-grow: 1;
+}
+
+.info-titulo {
+  margin: 0 0 4px 0;
+  font-size: 18px;
+  color: #1a1a1a;
+}
+
+.info-subtitulo {
+  margin: 0 0 8px 0;
+  font-size: 13px;
+  color: #757575;
+}
+
+.info-texto {
+  margin: 4px 0;
+  font-size: 14px;
+  color: #333333;
+}
+
+/* La sub-línea con calendario y costo */
+.info-detalles-linea {
+  display: flex;
+  gap: 24px;
+  margin-top: 12px;
+  font-size: 14px;
+  color: #444444;
+}
+
+.info-detalles-linea i {
+  color: #b71c1c; /* Iconos en rojo */
+}
+
+/* COLUMNA 3: La botonera alineada a la derecha */
+.tarjeta-acciones-box {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+/* Estilo base para los dos botones */
+.btn-accion {
+  padding: 8px 16px;
+  font-weight: bold;
+  font-size: 13px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 140px;
+  transition: background-color 0.2s ease;
+}
+
+.btn-imprimir {
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  color: #333333;
+}
+
+.btn-imprimir:hover {
+  background-color: #f0f0f0;
+}
+
+.btn-cancelar {
+  background-color: #b71c1c;
+  border: none;
+  color: #ffffff;
+}
+
+.btn-cancelar:hover {
+  background-color: #9a1212;
+}
+
+/* Separador horizontal */
+.tarjeta-divisor {
+  border: 0;
+  border-top: 1px solid #e0e0e0;
+  margin: 16px 0;
+}
+
+/* BLOQUE DE AVISO (Abajo de todo) */
+.tarjeta-aviso {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #616161;
+}
+
+.tarjeta-aviso i {
+  color: #0288d1; /* Azul informativo para la 'i' */
+}
+
+.tarjeta-aviso p {
+  margin: 0;
+  font-size: 13px;
+}
+
+.btn-cancelar-link {
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.btn-cancelar-disabled {
+  background-color: #cccccc;
+  border: none;
+  color: #555555;
+  cursor: not-allowed;
+}
+
+
+.btn-modificar {
+  background-color: #ffffff;
+  border: 1px solid #b71c1c;
+  color: #b71c1c;
+}
+
+.btn-modificar:hover {
+  background-color: #f5e7e7;
+}
+
+.btn-modificar-link {
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.btn-confirmar-modificacion-turno {
+  background-color: #2e7d32;
+  border: none;
+  color: #ffffff;
+}
+
+.btn-confirmar-modificacion-turno:hover:not(:disabled) {
+  background-color: #256628;
+}
+
+.btn-confirmar-modificacion-turno:disabled {
+  background-color: #cccccc;
+  color: #555555;
+  cursor: not-allowed;
+}
+
+.error-confirmacion-turno {
+  color: var(--color-acento);
+  font-weight: bold;
+  text-align: right;
+  margin: 0.5rem 0 0;
+}
+
+.motivo-modificacion-turno {
+  margin: 0.6rem 0 0;
+  padding: 0.5rem;
+  border-left: 4px solid var(--color-acento);
+  background-color: #fce8e6;
+  color: #333333;
+  font-size: 14px;
+}
+
+.btn-modificacion-pendiente {
+  background-color: #eeeeee;
+  border: 1px solid #999999;
+  color: #555555;
+  cursor: not-allowed;
+}

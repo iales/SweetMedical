@@ -1,0 +1,34 @@
+.form-container {
+  display: flex;
+  flex:1;
+  flex-direction: column;   
+  align-items: center;      
+  justify-content: center;          
+  gap: 1rem;             
+}
+
+.login-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;   
+  overflow: hidden;    
+}
+
+.logoSweet img {
+  height: 10rem;         
+}
+
+.no-account {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: black;
+  text-align: center;
+}
+
+.link-signIn {
+  color: var(--color-acento);
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+

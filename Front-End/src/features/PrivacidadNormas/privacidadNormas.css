@@ -1,0 +1,58 @@
+.privacidad-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.privacidad-container {
+  flex: 1;
+  padding: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.privacidad-container h1 {
+  color: var(--color-acento);
+  margin-bottom: 0.5rem;
+}
+
+.privacidad-intro {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.privacidad-bloque {
+  border: 1px solid black;
+  background-color: var(--color-secundario);
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.privacidad-bloque h2 {
+  margin-top: 0;
+  color: black;
+}
+
+.privacidad-bloque p {
+  margin: 0.5rem 0;
+}
+
+.privacidad-bloque li {
+  margin-bottom: 0.4rem;
+}
+
+.btn-volver-privacidad {
+  display: inline-block;
+  background-color: var(--color-acento);
+  color: var(--color-primario);
+  padding: 0.6rem 1rem;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+  .privacidad-container {
+    padding: 1rem;
+  }
+}

@@ -1,0 +1,41 @@
+.turno-cancelado-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+}
+
+.turno-cancelado-container {
+  background: #fff;
+  padding: 2rem 3rem;
+  border-radius: 8px;
+  text-align: center;
+  max-width: 500px;
+}
+
+.turno-cancelado-container h1 {
+  color: var(--color-acento);
+  margin-bottom: 1rem;
+}
+
+.turno-cancelado-container p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.turno-cancelado-icon {
+  font-size: 4rem;
+  color: var(--color-acento); 
+  margin-bottom: 1rem;
+}
+
+.btn-volver {
+  display: inline-block;
+  padding: 1rem;
+  background-color: var(--color-acento);
+  color: var(--color-primario);
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+}
+

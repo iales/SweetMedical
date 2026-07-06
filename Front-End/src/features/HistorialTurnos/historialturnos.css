@@ -1,0 +1,109 @@
+.historial-page {
+  min-height: 100vh;
+  background-color: var(--color-primario);
+}
+
+.historial-container {
+  padding: 1rem;
+}
+
+.historial-container h1 {
+  margin-bottom: 0.2rem;
+}
+
+.historial-texto {
+  margin-top: 0;
+}
+
+.historial-contadores {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.historial-contadores button {
+  background-color: var(--color-secundario);
+  border: 1px solid black;
+  padding: 0.5rem;
+  margin: 0;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.historial-contadores .contador-activo {
+  background-color: var(--color-acento);
+  color: var(--color-primario);
+}
+
+.tabla-contenedor {
+  overflow-x: auto;
+}
+
+.tabla-historial {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid black;
+}
+
+.tabla-historial th {
+  background-color: var(--color-acento);
+  color: var(--color-primario);
+  padding: 0.6rem;
+  border: 1px solid black;
+}
+
+.tabla-historial td {
+  padding: 0.6rem;
+  border: 1px solid black;
+}
+
+.tabla-historial tr:nth-child(even) {
+  background-color: var(--color-secundario);
+}
+
+.estado {
+  font-weight: bold;
+}
+
+.estado-pendiente {
+  color: #9b7300;
+}
+
+.estado-realizado {
+  color: green;
+}
+
+.estado-cancelado {
+  color: var(--color-acento);
+}
+
+.estado-esperando-confirmacion {
+  color: blue;
+}
+
+.sin-turnos {
+  font-weight: bold;
+  text-align: center;
+}
+
+.historial-mensaje,
+.historial-error {
+  border: 1px solid black;
+  padding: 0.7rem;
+  font-weight: bold;
+}
+
+.historial-error {
+  color: var(--color-acento);
+}
+
+@media (max-width: 768px) {
+  .historial-contadores {
+    flex-direction: column;
+  }
+
+  .tabla-historial {
+    font-size: 0.85rem;
+  }
+}

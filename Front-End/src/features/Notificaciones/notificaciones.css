@@ -1,0 +1,116 @@
+.notificaciones-page {
+  min-height: 100vh;
+  background-color: var(--color-primario);
+}
+
+.notificaciones-container {
+  padding: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.notificaciones-container h1 {
+  color: var(--color-acento);
+  margin-bottom: 0.3rem;
+}
+
+.notificaciones-texto {
+  margin-top: 0;
+  font-weight: bold;
+}
+
+.notificaciones-filtros {
+  display: flex;
+  gap: 0.7rem;
+  margin: 1rem 0;
+  flex-wrap: wrap;
+}
+
+.notificaciones-filtros button {
+  border: 1px solid black;
+  background-color: var(--color-secundario);
+  padding: 0.5rem 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.notificaciones-filtros .filtro-activo {
+  background-color: var(--color-acento);
+  color: var(--color-primario);
+}
+
+.notificaciones-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.notificacion-card {
+  border: 1px solid black;
+  background-color: var(--color-secundario);
+  padding: 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.notificacion-card.leida {
+  background-color: #ffffff;
+  color: #555555;
+}
+
+.notificacion-icono {
+  color: var(--color-acento);
+  font-size: 1.5rem;
+  padding-top: 0.2rem;
+}
+
+.notificacion-contenido {
+  flex: 1;
+}
+
+.notificacion-mensaje {
+  margin: 0;
+  white-space: pre-line;
+  font-weight: bold;
+}
+
+.notificacion-fecha {
+  margin: 0.5rem 0 0;
+  font-size: 0.9rem;
+  color: #555555;
+}
+
+.btn-marcar-leida {
+  background-color: var(--color-acento);
+  color: var(--color-primario);
+  border: none;
+  padding: 0.5rem 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.notificaciones-mensaje,
+.notificaciones-error {
+  border: 1px solid black;
+  padding: 1rem;
+  font-weight: bold;
+}
+
+.notificaciones-error {
+  color: var(--color-acento);
+}
+
+@media (max-width: 768px) {
+  .notificaciones-container {
+    padding: 1rem;
+  }
+
+  .notificacion-card {
+    flex-direction: column;
+  }
+
+  .btn-marcar-leida {
+    width: 100%;
+  }
+}

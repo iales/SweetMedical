@@ -1,0 +1,58 @@
+.posible-turno-card {
+  background-color: var(--color-primario);
+  border: 2px solid var(--color-acento);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1rem;
+  width: 15rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.posible-turno-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+.turno-practica {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--color-acento);
+  margin-bottom: 0.5rem;
+}
+
+.turno-medico,
+.turno-sede,
+.turno-horario,
+.turno-duracion,
+.turno-especialidad,
+.turno-costo {
+  margin: 0.3rem 0;
+  font-size: 1rem;
+}
+
+.btn-reservar {
+  display: block;
+  margin: 0.1rem auto 0;
+  padding: 0.6rem 2rem;
+  background-color: var(--color-acento);
+  color: var(--color-primario);
+  border: none;
+  border-radius: 0.5rem;
+  margin: 0.5rem auto;
+  margin-bottom: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-reservar:hover {
+  background-color: #ff6f61;
+  transform: scale(1.05);
+}
+
+.btn-agregado {
+    background-color: #2d8f47;
+    cursor: default;
+    opacity: 0.85;
+}

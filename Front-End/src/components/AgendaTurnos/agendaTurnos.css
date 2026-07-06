@@ -1,0 +1,102 @@
+/* Badge contenedor para el rango de horas */
+.agenda-horario-badge {
+  background-color: #e3f2fd;
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 1px solid #bbdefb;
+}
+
+.mainsection-cards-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  overflow-y: auto;
+  flex-grow: 1;
+  padding-right: 10px;
+}
+
+/* Contenedor de las sedes (las apila con un espacio prolijo) */
+.agenda-sedes-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+/* Tarjeta individual de la sede */
+.agenda-sede-card {
+  background-color: #f8f9fa;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Efecto hover copado para que parezcan interactivas */
+.agenda-sede-card:hover {
+  background-color: #ffffff;
+  border-color: #1976d2; /* Se pinta del azul de MUI en hover */
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px); /* Sutil levante hacia arriba */
+}
+
+/* Encabezado interno de la tarjetita */
+.agenda-sede-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.agenda-sede-icon-building {
+  color: var(--color-acento); /* Usa el rojo de tu app */
+  font-size: 1.2rem !important;
+}
+
+.agenda-sede-nombre {
+  font-weight: bold !important;
+  color: #333333;
+}
+
+/* Cuerpo interno (Dirección) */
+.agenda-sede-body {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  padding-left: 2px;
+}
+
+.agenda-sede-icon-pin {
+  color: #757575;
+  font-size: 1.1rem !important;
+  margin-top: 2px; /* Alinea el pin con el renglón de texto */
+}
+
+.agenda-sede-direccion {
+  font-size: 0.95rem;
+  color: #555555;
+  line-height: 1.4;
+}
+
+@media (max-width: 960px) {
+
+  .mainsection-cards-wrapper {
+    overflow-y: visible;
+    padding-right: 20;
+    gap: 16px;
+  }
+
+  .MuiListItem-root {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px;
+  }
+
+  .agenda-horario-badge {
+    width: 100%; 
+    justify-content: center;
+    box-sizing: border-box;
+  }
+}

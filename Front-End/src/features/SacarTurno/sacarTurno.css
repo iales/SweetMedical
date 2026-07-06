@@ -1,0 +1,20 @@
+.sacarTurno-page{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+  padding: 1.5rem;
+  margin: 1rem auto; 
+  margin-bottom: 0.5rem;
+  box-sizing: border-box;
+}
+
+h3{
+  color: var(--color-acento);
+  text-align: center;
+  font-size: 3rem;
+  font-style: bold;
+  margin: 0;
+}
+
